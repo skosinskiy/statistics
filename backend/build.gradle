@@ -5,6 +5,7 @@ plugins {
     id 'checkstyle'
     id 'java'
     id 'jacoco'
+    id 'org.sonarqube' version "2.7.1"
 }
 
 apply plugin: 'jacoco'
@@ -65,3 +66,10 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "statistics"
+        property "sonar.projectKey", "statistics"
+    }
+}

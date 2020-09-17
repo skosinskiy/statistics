@@ -19,6 +19,12 @@ cache:
 
 script:
   - ./gradlew clean build
+  - ./gradlew sonarqube
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+addons:
+  sonarcloud:
+    organization: "skosinskiy-github"
+    token: "${SONAR_TOKEN}"

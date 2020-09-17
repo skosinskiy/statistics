@@ -10,7 +10,7 @@ coverage:
         base: auto
     project:
       default:
-        target: 95%
+        target: 80%
         threshold: 2%
         base: auto
   range: 90..100

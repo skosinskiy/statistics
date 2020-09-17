@@ -1,2 +1,7 @@
-*/gradle
-*/.gradle
+# Gradle build files
+/.gradle
+
+# Log files
+*/logs
+*.log
+

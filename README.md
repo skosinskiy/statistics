@@ -11,7 +11,7 @@
 ##### Actions to build production build from root directory:
 1. Run command 'npm run-script build --prefix frontend/'
 
-######Important! 
+###### Important! 
 
 Both dev and production builds are going through ESLint and Stylelint checks!
 

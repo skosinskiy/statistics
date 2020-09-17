@@ -26,7 +26,7 @@ Both dev and production builds are going through ESLint and Stylelint checks!
 ##### Actions for PRODUCTION build from root directory:
 1. Run command 'gradlew clean buildApplicationLocal'
 
-### Credential
+### Test credentials
 Login: user@gmail.com
 
 Password: admin

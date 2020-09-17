@@ -1,5 +1,4 @@
-# Gradle files
-/gradle
+# Gradle build files
 /.gradle
 
 # Log files

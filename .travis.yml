@@ -1,0 +1,15 @@
+dist:
+  trusty
+
+language:
+  java
+
+jdk:
+  - openjdk11
+
+cache:
+  directories:
+    - $HOME/.gradle
+
+script:
+  - ./gradlew clean build

@@ -1,14 +1,55 @@
 plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'io.freefair.lombok' version '5.2.1'
+    id 'checkstyle'
     id 'java'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'com.statistics'
+version '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-test'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'com.cosium.spring.data:spring-data-jpa-entity-graph:2.3.1'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.modelmapper:modelmapper:2.3.8'
+
+    annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.4.13.Final'
+
+    runtimeOnly 'com.h2database:h2'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+checkstyle {
+    toolVersion '7.6.1'
+    checkstyleTest.enabled = false
+    configFile(new File('checkstyle.xml'))
+}
+
+tasks.withType(Checkstyle).each { checkstyleTask ->
+    checkstyleTask.doLast {
+        reports.all { report ->
+            def outputFile = report.destination
+            if (outputFile.exists() && outputFile.text.contains("<error ")) {
+                throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
+            }
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
 }

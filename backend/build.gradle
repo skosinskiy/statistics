@@ -4,6 +4,7 @@ plugins {
     id 'io.freefair.lombok' version '5.2.1'
     id 'checkstyle'
     id 'java'
+    id 'jacoco'
 }
 
 group 'com.statistics'
@@ -52,4 +53,11 @@ tasks.withType(Checkstyle).each { checkstyleTask ->
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
 }

@@ -30,6 +30,7 @@ dependencies {
     implementation 'javax.validation:validation-api:2.0.1.Final'
     implementation 'org.modelmapper:modelmapper:2.3.8'
     implementation 'org.codehaus.janino:janino:3.0.7'
+    implementation 'org.flywaydb:flyway-core'
 
     annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.4.13.Final'
 

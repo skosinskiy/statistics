@@ -1,4 +1,4 @@
 rootProject.name = 'statistics'
 
-include 'backend'
+include 'backend', 'frontend'
 

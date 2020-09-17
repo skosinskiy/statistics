@@ -7,6 +7,8 @@ plugins {
     id 'jacoco'
 }
 
+apply plugin: 'jacoco'
+
 group 'com.statistics'
 version '0.0.1-SNAPSHOT'
 
@@ -61,3 +63,5 @@ jacocoTestReport {
         html.enabled false
     }
 }
+
+check.dependsOn jacocoTestReport

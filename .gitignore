@@ -1,7 +1,12 @@
-# Gradle build files
+.idea
+
+# Gradle files
 /.gradle
 
 # Log files
 */logs
 *.log
+
+# Backend build files
+**/build
 

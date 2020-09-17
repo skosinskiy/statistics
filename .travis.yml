@@ -18,8 +18,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-  - ./gradlew clean build
-  - ./gradlew sonarqube
+  - ./gradlew clean build sonarqube
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

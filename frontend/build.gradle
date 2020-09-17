@@ -1,0 +1,27 @@
+task clean() {
+    doFirst {
+        delete 'build'
+    }
+}
+
+task build(type: Exec) {
+    dependsOn('install')
+    doFirst {
+        workingDir '/'
+        commandLine'npm.cmd', 'run-script', 'build'
+    }
+    doLast {
+        copy {
+            println "Copying frontend build to backend resources"
+            from "build"
+            into "../backend/src/main/resources/static"
+        }
+    }
+}
+
+task install(type: Exec) {
+    doFirst {
+        workingDir '/'
+        commandLine 'npm.cmd', 'install'
+    }
+}

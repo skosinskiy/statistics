@@ -1,12 +1,14 @@
 .idea
 
-# Gradle files
+# Gradle cache files
 /.gradle
 
 # Log files
 */logs
 *.log
 
-# Backend build files
+# Build files
 **/build
 
+# Node cache files
+**/node_modules

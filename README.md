@@ -20,7 +20,7 @@ Both dev and production builds are going through ESLint and Stylelint checks!
 ##### Actions to start DEV server from root directory:
 1. Run command 'gradlew clean bootRun'
 ##### Actions for PRODUCTION build from root directory:
-1. Run command 'gradlew clean build'
+1. Run command 'gradlew clean buildApplicationLocal'
 
 ### Entire application
 ##### Actions for PRODUCTION build from root directory:

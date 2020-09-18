@@ -12,7 +12,7 @@ import { Preloader } from './components/Preloader/Preloader'
 class App extends Component {
   componentDidMount () {
     this.props.getCurrentUser()
-  }
+  };
 
   render () {
     if (this.props.isCurrentUserLoading) {
@@ -31,17 +31,18 @@ class App extends Component {
       </ThemeProvider>
     )
   }
-}
+};
 
 const mapStateToProps = state => {
   return {
     currentUser: state.users.currentUser,
-    isCurrentUserLoading: state.users.isCurrentUserLoading
+    isCurrentUserLoading: state.users.isCurrentUserLoading,
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  getCurrentUser: () => dispatch(usersOperations.getCurrentUser())
+  getCurrentUser: () => dispatch(usersOperations.getCurrentUser()),
+  
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

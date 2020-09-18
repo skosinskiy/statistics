@@ -58,30 +58,25 @@ const AdminPage = () => {
     <div className={classes.root}>
       <AppBar
         position="absolute"
-        className={classNames(classes.appBar, classes.appBarShift)}
-      >
+        className={classNames(classes.appBar, classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton onClick={logoutUser} color="inherit" alt="Log out">
             <ExitToAppRoundedIcon/>
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: classNames(classes.drawerPaper)
-        }}
-      >
-        <div className={classes.toolbarText}>
-              Hello!
-        </div>
-        <Divider/>
-        <SidebarMenu/>
-        <Divider/>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer}/>
-        <AdminRoutes/>
+	  
+      	<Drawer variant="permanent" classes={{paper: classNames(classes.drawerPaper)}}>
+			<div className={classes.toolbarText}>
+				Hello!
+			</div>
+			<Divider/>
+			<SidebarMenu/>
+			<Divider/>
+       </Drawer>
+       <main className={classes.content}>
+			<div className={classes.appBarSpacer}/>
+			<AdminRoutes/>
       </main>
     </div>
   )

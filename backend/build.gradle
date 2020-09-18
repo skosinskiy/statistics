@@ -31,6 +31,8 @@ dependencies {
     implementation 'org.modelmapper:modelmapper:2.3.8'
     implementation 'org.codehaus.janino:janino:3.0.7'
     implementation 'org.flywaydb:flyway-core'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.2.32'
 
     annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.4.13.Final'
 

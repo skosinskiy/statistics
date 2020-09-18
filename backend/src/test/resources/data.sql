@@ -11,3 +11,15 @@ INSERT INTO user_permissions
     (user_id, permission_id)
 VALUES (1, 0),
        (3, 0);
+
+INSERT INTO sports
+    (title)
+VALUES ('Football'),
+       ('Basketball');
+
+INSERT INTO tournaments
+    (id, title, sport_id)
+VALUES (1, 'English Premier League', 1),
+       (2, 'Spain LaLiga', 1),
+       (3, 'Italian Serie A', 1),
+       (4, 'NBA', 2);

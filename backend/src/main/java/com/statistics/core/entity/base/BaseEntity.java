@@ -16,4 +16,5 @@ public class BaseEntity extends Auditable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
 }

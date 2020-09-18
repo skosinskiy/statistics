@@ -22,7 +22,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@Transactional
 @AutoConfigureMockMvc
 @WithMockUser(username = "user1@gmail.com")
 public class UserControllerTest {

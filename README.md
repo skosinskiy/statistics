@@ -6,8 +6,9 @@
 
 ### Frontend server
 ##### Actions to start DEV server from root directory:
-1. Run command 'npm install --prefix frontend/'
-2. Run command 'npm start --prefix frontend/'
+1. Run command 'cd frontend'
+2. Run command 'npm install'
+3. Run command 'npm start'
 ##### Actions for PRODUCTION build from root directory:
 1. Run command 'npm run-script build --prefix frontend/'
 
@@ -30,3 +31,8 @@ Both dev and production builds are going through ESLint and Stylelint checks!
 Login: user@gmail.com
 
 Password: admin
+
+### API Documentation
+Swagger documentation is available by path /swagger-ui.html
+
+By default, documentation may be retrieved by url http://localhost:10000/swagger-ui.html

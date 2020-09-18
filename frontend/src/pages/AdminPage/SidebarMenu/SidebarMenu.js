@@ -12,10 +12,9 @@ import { getCategorySports } from '../../../store/categorySports/operations'
 
 export const SidebarMenu = props => {
   const dispatch = useDispatch()
+  const category = useSelector(state => state.categorySports.categorySports)
   useEffect(() => dispatch(getCategorySports()), [dispatch])
   const user = useSelector(state => state.users.currentUser)
-  const category = useSelector(state => state.categorySports.categorySports)
-  
   console.log(category)
 
   return (

@@ -3,8 +3,9 @@ import api from '../../components/Axios/Axios'
 import { toastr } from 'react-redux-toastr'
 
 export const getCategorySports = () => dispatch => {
+  console.log('!!!!!!!!!!!!!!')
   dispatch(ACTIONS.categorySportsLoading(true))
-  return api.get('/api/sports')
+  api.get('/api/sports')
     .then(res => {
       console.log('in action', res)
       dispatch(ACTIONS.categorySportsFetched(res))

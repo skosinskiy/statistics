@@ -36,12 +36,12 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.users.currentUser,
-    isCurrentUserLoading: state.users.isCurrentUserLoading,
+    isCurrentUserLoading: state.users.isCurrentUserLoading
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  getCurrentUser: () => dispatch(usersOperations.getCurrentUser()),
+  getCurrentUser: () => dispatch(usersOperations.getCurrentUser())
   
 })
 

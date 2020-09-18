@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import { Grant } from '../../../constants/permissions'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined'
 import { hasGrant } from '../../../utils/hasGrant'
 import { CustomNavLink } from '../../../components/NavLink/NavLink'
+import { getCategorySports } from '../../../store/categorySports/operations'
 
 export const SidebarMenu = props => {
+  const dispatch = useDispatch()
+  useEffect(() => dispatch(getCategorySports()), [dispatch])
   const user = useSelector(state => state.users.currentUser)
+  const category = useSelector(state => state.categorySports.categorySports)
+  
+  console.log(category)
 
   return (
     <div>
@@ -41,3 +48,5 @@ export const SidebarMenu = props => {
     </div>
   )
 }
+
+export default withRouter(SidebarMenu)

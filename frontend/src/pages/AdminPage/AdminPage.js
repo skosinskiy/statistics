@@ -65,18 +65,17 @@ const AdminPage = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
-	  
-      	<Drawer variant="permanent" classes={{paper: classNames(classes.drawerPaper)}}>
-			<div className={classes.toolbarText}>
-				Hello!
-			</div>
-			<Divider/>
-			<SidebarMenu/>
-			<Divider/>
-       </Drawer>
-       <main className={classes.content}>
-			<div className={classes.appBarSpacer}/>
-			<AdminRoutes/>
+      <Drawer variant="permanent" classes={{ paper: classNames(classes.drawerPaper) }}>
+        <div className={classes.toolbarText}>
+           Hello!
+        </div>
+        <Divider/>
+        <SidebarMenu/>
+        <Divider/>
+      </Drawer>
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer}/>
+        <AdminRoutes/>
       </main>
     </div>
   )

@@ -1,6 +1,6 @@
-import * as categorySportsOperations from './operations';
-import reducer from './reducer';
+import * as categorySportsOperations from './operations'
+import reducer from './reducer'
 
-export { categorySportsOperations };
+export { categorySportsOperations }
 
-export default reducer;
+export default reducer

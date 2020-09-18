@@ -18,4 +18,5 @@ coverage:
   precision: 2
 
 ignore:
-  - "**/com.statistics.core.StatisticsApp.java"
+  - "backend/src/main/java/com/statistics/core/config/*.java"
+  - "backend/src/main/java/com/statistics/core/StatisticsApp.java"

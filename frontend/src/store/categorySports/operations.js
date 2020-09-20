@@ -15,5 +15,6 @@ export const getCategorySports = () => dispatch => {
 }
 
 export const setChoiceCategoryOfSports = (id) => dispatch => {
+  console.log('setChoiceCategoryOfSports:', id)
   dispatch(ACTIONS.categorySportsChoice(id))
 }

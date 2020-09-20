@@ -24,7 +24,7 @@ export const SidebarMenu = props => {
   return (
     category ? category.map(sport => {
       return hasGrant(user, Grant.VIEW) &&
-      <CustomNavLink to={'/' + sport.title} key={'id_' + sport.id}>
+      <CustomNavLink to={'/sport/' + sport.title} key={'id_' + sport.id}>
         <ListItem button alignItems={'center'} onClick={() => changeCategoryId(sport.id)}>
           <ListItemIcon>
             <DescriptionOutlinedIcon/>

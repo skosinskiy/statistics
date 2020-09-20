@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 // redux
-import { useDispatch, useSelector } from 'react-redux'
-import { getTournamentsOfSport } from '../../../store/tournamentsSport/operations'
+import { useSelector } from 'react-redux'
 // material
 import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
@@ -24,35 +23,24 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const TournamentsList = props => {
-  const dispatch = useDispatch()
-
-  const activeSportId = useSelector(state => state.categorySports.choiceCategory)
-  console.log('activeSportId', activeSportId)
-  useEffect((activeSportId) => dispatch(getTournamentsOfSport(activeSportId)), [dispatch])
   const tournaments = useSelector(state => state.tournamentsOfSport.tournaments)
-  console.log(tournaments)
   const classes = useStyles()
 
   return (
-    <Accordion>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
-        <Typography className={classes.heading}>Accordion 1</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </AccordionDetails>
-    </Accordion>
+    tournaments ? tournaments.map(tournament => {
+      return <Accordion key={'id_' + tournament.id}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>{tournament.title}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+            no info
+        </AccordionDetails>
+      </Accordion>
+    }) : null
   )
 }
 

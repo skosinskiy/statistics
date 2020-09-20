@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const AdminPage = () => {
+const AdminPage = props => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const activeSportId = useSelector(state => state.categorySports.choiceCategory)

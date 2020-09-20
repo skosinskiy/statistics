@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Grant } from '../../constants/permissions'
 import { hasGrant } from '../../utils/hasGrant'
-import { Football } from '../../pages/AdminPage/Football/Football'
-import { Basketball } from '../../pages/AdminPage/Basketball/Basketball'
+import { Sports } from '../../pages/AdminPage/Sports/Sports'
 import { NotFound } from '../Page404/Page404'
 import { Home } from '../../pages/AdminPage/Home/Home'
 
@@ -16,8 +15,7 @@ class AdminRouter extends Component {
       <React.Fragment>
         <Switch>
           <Route exact path="/" component={Home} />
-          <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/football" component={Football} />
-          <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/basketball" component={Basketball} />
+          <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/sport/:id" component={Sports} />
 
           <Route path="*" component={NotFound} />
         </Switch>

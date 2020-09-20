@@ -2,10 +2,11 @@ import * as TYPES from './types'
 
 const initialState = {
   categorySports: null,
-  isCategorySportsLoading: true
+  isCategorySportsLoading: true,
+  choiceCategory: null // default null if choice have nuber
 }
 
-const usersReducer = (state = initialState, action) => {
+const categorySportsReducer = (state = initialState, action) => {
   switch (action.type) {
     case TYPES.CATEGORY_SPORTS_FETCHED:
       return {
@@ -17,6 +18,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isCategorySportsLoading: action.payload
       }
+    case TYPES.CATEGORY_SPORTS_CHOICE:
+      return {
+        ...state,
+        choiceCategory: action.payload
+      }
     default:
       return {
         ...state
@@ -24,4 +30,4 @@ const usersReducer = (state = initialState, action) => {
   };
 }
 
-export default usersReducer
+export default categorySportsReducer

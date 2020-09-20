@@ -9,3 +9,8 @@ export const categorySportsFetched = (categorySports) => ({
   type: TYPES.CATEGORY_SPORTS_FETCHED,
   payload: categorySports
 })
+
+export const categorySportsChoice = (id) => ({
+  type: TYPES.CATEGORY_SPORTS_CHOICE,
+  payload: id
+})

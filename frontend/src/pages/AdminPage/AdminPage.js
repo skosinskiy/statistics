@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -10,16 +10,29 @@ import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded'
 import { SidebarMenu } from './SidebarMenu/SidebarMenu'
 import AdminRoutes from '../../components/AdminRoutes/AdminRoutes'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+//  component
+import { TournamentsList } from './TournamentsList/TournamentsList'
+// redux
+import { useDispatch, useSelector } from 'react-redux'
+import { getCategorySports } from '../../store/categorySports/operations'
+// style
+import './AdminPage.scss'
 
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  appBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '0px 0px 0px 250px',
+    justifyContent: 'space-between'
   },
   toolbar: {
-    display: 'flex',
-    justifyContent: 'flex-end'
+    display: 'flex'
   },
   toolbarText: {
     display: 'flex',
@@ -37,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen
     })
   },
-  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
@@ -48,7 +60,9 @@ const useStyles = makeStyles((theme) => ({
 
 const AdminPage = () => {
   const classes = useStyles()
-
+  const dispatch = useDispatch()
+  const activeSportId = useSelector(state => state.categorySports.choiceCategory)
+  useEffect(() => dispatch(getCategorySports()), [dispatch])
   const logoutUser = () => {
     window.localStorage.clear()
     window.location.reload()
@@ -56,9 +70,10 @@ const AdminPage = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar
-        position="absolute"
-        className={classNames(classes.appBar, classes.appBarShift)}>
+      <AppBar className={classNames(classes.appBar)}>
+        <div className="sidebar-wrapper">
+          <SidebarMenu/>
+        </div>
         <Toolbar className={classes.toolbar}>
           <IconButton onClick={logoutUser} color="inherit" alt="Log out">
             <ExitToAppRoundedIcon/>
@@ -70,7 +85,9 @@ const AdminPage = () => {
            Hello!
         </div>
         <Divider/>
-        <SidebarMenu/>
+        {
+          activeSportId ? <TournamentsList></TournamentsList> : null
+        }
         <Divider/>
       </Drawer>
       <main className={classes.content}>

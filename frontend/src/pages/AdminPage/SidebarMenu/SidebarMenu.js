@@ -1,50 +1,39 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import { Grant } from '../../../constants/permissions'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined'
 import { hasGrant } from '../../../utils/hasGrant'
 import { CustomNavLink } from '../../../components/NavLink/NavLink'
-import { getCategorySports } from '../../../store/categorySports/operations'
+// redux
+import { useDispatch } from 'react-redux'
+import { setChoiceCategoryOfSports } from '../../../store/categorySports/operations'
+import { getTournamentsOfSport } from '../../../store/tournamentsSport/operations'
 
 export const SidebarMenu = props => {
-  const dispatch = useDispatch()
   const category = useSelector(state => state.categorySports.categorySports)
-  useEffect(() => dispatch(getCategorySports()), [dispatch])
   const user = useSelector(state => state.users.currentUser)
-  console.log(category)
+  const dispatch = useDispatch()
+  const changeCategoryId = (id) => {
+    dispatch(setChoiceCategoryOfSports(id))
+    dispatch(getTournamentsOfSport(id))
+  }
 
   return (
-    <div>
-
-      {
-        hasGrant(user, Grant.VIEW) &&
-                    <CustomNavLink to={'/football'}>
-                      <ListItem button alignItems={'center'}>
-                        <ListItemIcon>
-                          <DescriptionOutlinedIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary={'Football'}/>
-                      </ListItem>
-                    </CustomNavLink>
-      }
-
-      {
-        hasGrant(user, Grant.VIEW) &&
-          <CustomNavLink to={'/basketball'}>
-            <ListItem button alignItems={'center'}>
-              <ListItemIcon>
-                <DescriptionOutlinedIcon/>
-              </ListItemIcon>
-              <ListItemText primary={'Basketball'}/>
-            </ListItem>
-          </CustomNavLink>
-      }
-
-    </div>
+    category ? category.map(sport => {
+      return hasGrant(user, Grant.VIEW) &&
+      <CustomNavLink to={'/' + sport.title} key={'id_' + sport.id}>
+        <ListItem button alignItems={'center'} onClick={() => changeCategoryId(sport.id)}>
+          <ListItemIcon>
+            <DescriptionOutlinedIcon/>
+          </ListItemIcon>
+          <ListItemText primary={sport.title}/>
+        </ListItem>
+      </CustomNavLink>
+    }) : null
   )
 }
 

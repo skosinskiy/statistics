@@ -1,0 +1,152 @@
+//colors
+$color-font-blue79: #79D9FE;
+$color-blue: #3249A4;
+$color-blue-darktitle: #3C3F75;
+$color-blue-lighten: #2297EE;
+$black-blue-bg: #262851;
+$greey-bg-schema: #303361;
+$base-font-color: rgba(0,0,0,.87);
+$base-font-white: #ffffff;
+$base-font-white87:rgba(255, 255, 255, 0.87);
+$base-font-blue: #1A51C5;
+$color-font-grey: #6e6e6e;
+$color-bg-beige: #F4F2F1;
+$color-bg-beige1: #EEEBEA;
+$color-accent-btn: #FD484C;
+$color-hr: #e2e6ea;
+$color-dote-list: #177BCE;
+$color-grey: #808080;
+$color-grey2: #8b8b8b;
+$background-color-blue-home: #e3f2fd;
+$background-color-lightenblue: #f7fbfe;
+$link-hover: #00559b;
+$color-blue-darkest: #0e75d2;
+$seperate-line-grey-darker: #cecece;
+$color-red-error-line: #fb5258;
+$bg-blue-base: #2196f3;
+$color-grey-lighten: #ededf1;
+$color-green: #7cb342;
+$color-green-darcken: #509901;
+$color-blue-lightest: #00b0ff;
+$color-soft-yellow: #ffe211;
+$background-app: #fafafa;
+$color-default-material: rgba(0, 0, 0, 0.38);
+$background-color: #ffffff;
+$background-color-gray: #f8f8ff;
+$color-red: #ff5252;
+$seperate-line-grey-lighter: #e3e9ef;
+$color-lifecell: #f8d602;
+$background-color-beige: #f6faff;       //Cards with Speedometr
+$color-blue-grey: #c7ddf1;
+$btn_new_blue: #52BFEA;
+$color-orange: #fd9045;             // bottom , promo-price in TariffCards
+$color-promo-shadow: #B75321;
+$color-red-order: #C53E3E;
+$bg-blue-base-hover: #29409b;
+$bg-beige-mat-card: #F5F5F5;
+$background-material-menu: #f8f8f8;
+$background-footer-blue: #2196f3;  //Footer, LocationCards, Basket
+$color-blue-darken: #177bc9;   // ALTERNATIVE STYLE
+$color-facebook: #3b5998 ;// #8b9dc3;
+$color-bg-header-all: #222441;
+$color_bg-header-all_scrolled: rgba(29, 30, 51, 0.6);
+$color-bg-nav-menu: none;
+$bg-footer-menu-link: #e6e8f1;
+$color-blue-darcken: #177bc9;   // ATTENTION !!! spelling mistake
+$background-toutube: #063249; // подложка для YouTube
+$background-tv-expander: #A7B4CE;
+$background-card-ordered: #E4F4FC;
+$background-btn-callback: #C84B05;
+
+$background-color-hr: #f0f0f0;
+$seperate-line-grey: #e0e0e0;
+$seperate-line-grey-lighter: #e3e9ef;
+$seperate-line-grey-darker: #cecece;
+
+// container widths
+$container_width_xl: 1168px;    // 1168px; xl -- Extra large devices
+$container_width_lg: 750px;     // 750px;  md -- Medium devices
+$container_width_sm: 320px;     // 320px;  sm -- Small devices
+
+//  Header Page variable
+$header_page_height: 300px;
+$header_page_height_md: 360px;
+$header_page_height_sm: 390px;
+
+// Header home
+$header-home_height_default: auto;
+$header-home_height_md: 1000px;
+$header-home_height_sm: 567px;
+
+// Body Paddings
+$body_padding_xl: 24px 0 32px;
+
+// order panel home
+$order_panel-height-xl: 126px;
+$order_panel-height-md: 172px;
+$order_panel-height-sm: 272px;
+
+// Card variable
+$card_padding_xl: 24px;
+$card_padding_sm: 24px 16px;
+
+// Header measure
+$header-height: 116px;
+
+// App Header
+$header_height: 116px;
+$header_height_md: 116px;
+$header_height_sm: 62px;
+$header_height_hide: 48px;
+$header_height_hide_md: 0;
+$header_height_hide_sm: 0;
+
+// GRID columns widths
+// variable for @mixin 'grid_2-columns()' & header .header_page-flex-item
+// ***** 1 or 1 ******
+$grid_column_width_1or2_xl: calc(50% - 15px);
+
+// ***** 2 or 1 ******
+// 750 + 30 + 360 = 1140
+$grid_column_width_1or3_xl: 363px;
+$grid_column_width_2or3_xl: 753px;
+// 465 + 30 + 225 = 720
+$grid_column_width_1or3_lg: 228px;
+$grid_column_width_2or3_lg: 468px;
+
+// ***** 3 or 1 ******
+// 848 + 30 + 262 = 1140
+$grid_column_width_1or4_xl: 265px;
+$grid_column_width_3or4_xl: 851px;
+// 465 + 30 + 225 = 720
+$grid_column_width_1or4_lg: 168px;
+$grid_column_width_3or4_lg: 528px;
+
+// Card variable
+$card_padding_xl: 24px;
+$card_padding_sm: 24px 16px;
+// Card Material padding
+$card_mat_padding_xl: 24px 36px 24px 24px;
+$card_mat_padding_sm: 16px 24px 16px 16px;
+
+$card_width_1_of_4_xl: 267px;       // 1168 --- 12+267+12 - 12+267+12 - 12+267+12 - 12+267+12 --- 291*4
+$card_width_1_of_3_xl: 366px;       // 1168 --- 12+364+12 - 12+364+12 - 12+364+12 - --------- --- 388*3
+
+$card_width_1_of_3_lg: 224px;       // 750  --- 15+220+15 - 15+220+15 - 15+220+15
+$card_width_1_of_2_lg: 236px;       // 750  --- 15+345+15 - 15+345+15
+
+$card_width_1_of_1_sm: 290px;       // 320  --- 15+290+15
+
+//  Header Page variable
+$header_height_xxl_type_1: 474px;   // USES BY: /internet, /internet-tv, /tv
+$header_height_xl_type_1: 324px;    // USED BY: /services-details, /devices-details, /docs
+$header_height_xl_type_2: 220px;    // USED BY: /career, /services, /devices,
+
+$header_height_md_type_1: 380px;    // USED BY: /news
+$header_height_sm_type_1: 340px;    // USED BY: /services-details, /devices-details
+$header_height_sm_type_2: 276px;    // USED BY: /career, /services, /devices,
+
+
+// Body Paddings
+$body_padding_xl: 24px 0 32px;      // USED BY: /career, /biz
+$body_padding_sm: 24px 0 32px;

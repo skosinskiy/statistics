@@ -6,15 +6,22 @@ import { Grant } from '../../constants/permissions'
 import { hasGrant } from '../../utils/hasGrant'
 import { Football } from '../../pages/AdminPage/Football/Football'
 import { Basketball } from '../../pages/AdminPage/Basketball/Basketball'
+import { NotFound } from '../Page404/Page404'
+import { Home } from '../../pages/AdminPage/Home/Home'
 
 class AdminRouter extends Component {
   render () {
     const { user } = this.props
     return (
-      <Switch>
-        <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/football" component={Football} />
-        <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/basketball" component={Basketball} />
-      </Switch>
+      <React.Fragment>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/football" component={Football} />
+          <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/basketball" component={Basketball} />
+
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </React.Fragment>
     )
   }
 }

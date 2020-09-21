@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TournamentSpecification implements BaseSpecification<Tournament> {
 
-  public Specification<Tournament> sportIdEquals(Integer sportId) {
+  public Specification<Tournament> sportIdEquals(Long sportId) {
     return (root, query, cb) -> cb.equal(root.get(Tournament_.sport).get(Sport_.id), sportId);
   }
 

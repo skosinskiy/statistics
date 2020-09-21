@@ -17,7 +17,7 @@
 Both dev and production builds are going through ESLint and Stylelint checks!
 
 ### Backend server
-###### At least Java 8 requeired to run backend server (guide to install Java https://stackoverflow.com/questions/52511778/how-to-install-openjdk-11-on-windows)
+###### At least Java 11 requeired to run backend server (guide to install Java https://stackoverflow.com/questions/52511778/how-to-install-openjdk-11-on-windows)
 ##### Actions to start DEV server from root directory:
 1. Run command 'gradlew clean bootRun'
 ##### Actions for PRODUCTION build from root directory:

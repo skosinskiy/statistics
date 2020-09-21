@@ -1,11 +1,11 @@
 package com.statistics.core.security;
 
+import com.statistics.core.controller.dto.auth.LoginRequest;
+import com.statistics.core.controller.dto.auth.RefreshRequest;
+import com.statistics.core.controller.dto.response.auth.LoginResponse;
 import com.statistics.core.entity.user.Permission;
 import com.statistics.core.entity.user.User;
 import com.statistics.core.error.exception.ActionForbiddenException;
-import com.statistics.core.rest.dto.request.auth.LoginRequest;
-import com.statistics.core.rest.dto.request.auth.RefreshRequest;
-import com.statistics.core.rest.dto.response.auth.LoginResponse;
 import com.statistics.core.service.user.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;

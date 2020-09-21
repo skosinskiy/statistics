@@ -20,7 +20,7 @@ public class TournamentService {
     this.specification = specification;
   }
 
-  public List<Tournament> findAllBySportId(Integer sportId) {
+  public List<Tournament> findAllBySportId(Long sportId) {
     return repository.findAll(specification.sportIdEquals(sportId));
   }
 }

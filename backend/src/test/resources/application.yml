@@ -9,6 +9,7 @@ spring:
           lob:
             non_contextual_creation: true
     open-in-view: false
+    show-sql: true
 
 jwt:
   secret: ${random.uuid}

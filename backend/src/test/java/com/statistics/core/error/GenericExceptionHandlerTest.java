@@ -1,7 +1,7 @@
 package com.statistics.core.error;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.statistics.core.rest.dto.response.error.ErrorResponse;
+import com.statistics.core.controller.dto.response.error.ErrorResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;

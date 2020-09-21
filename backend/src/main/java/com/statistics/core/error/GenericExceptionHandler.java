@@ -1,8 +1,8 @@
 package com.statistics.core.error;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.statistics.core.controller.dto.response.error.ErrorResponse;
 import com.statistics.core.error.exception.AuthenticationException;
-import com.statistics.core.rest.dto.response.error.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

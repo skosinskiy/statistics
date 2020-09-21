@@ -13,8 +13,8 @@ apply plugin: 'jacoco'
 group 'com.statistics'
 version '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
 
 repositories {
     mavenCentral()
@@ -33,6 +33,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation 'org.springdoc:springdoc-openapi-ui:1.4.6'
     implementation 'org.springdoc:springdoc-openapi-core:1.1.49'
+    implementation 'org.springdoc:springdoc-openapi-data-rest:1.4.6'
     implementation 'io.github.classgraph:classgraph:4.8.63'
 
     annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.4.13.Final'
@@ -40,6 +41,14 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
 }
 
 checkstyle {

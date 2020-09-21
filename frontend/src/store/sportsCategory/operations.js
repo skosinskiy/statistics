@@ -19,3 +19,7 @@ export const setChoiceCategoryOfSports = (id) => dispatch => {
   dispatch(ACTIONS.sportsCategoryChoice(id))
   dispatch(getTournaments(id))
 }
+
+export const sportsRouterHelper = (name) => dispatch => {
+  console.log(name)
+}

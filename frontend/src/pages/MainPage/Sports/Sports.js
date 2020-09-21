@@ -2,10 +2,16 @@ import React from 'react'
 // components
 import { LinearIndeterminate } from '../../../components/LinearIndeterminate/LinearIndeterminate'
 // redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-export const Sports = () => {
+export const Sports = (props) => {
+
   const isTournamentsLoading = useSelector(state => state.tournaments.isTournamentsLoading)
+  const tournaments = useSelector(state => state.tournaments.tournaments)
+
+  if (isTournamentsLoading && !tournaments) {
+    console.log('in if', props.match.params.id)
+  }
   
   return (
     <React.Fragment>

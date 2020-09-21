@@ -3,7 +3,6 @@ import api from '../../components/Axios/Axios'
 import { toastr } from 'react-redux-toastr'
 
 export const getTournaments = (id) => dispatch => { // id of sport
-  console.log('getTournaments', id)
   dispatch(ACTIONS.tournamentsLoading(true))
   api.get('/api/tournaments/sport/' + id)
     .then(res => {

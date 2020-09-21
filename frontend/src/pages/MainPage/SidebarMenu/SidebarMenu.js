@@ -9,16 +9,14 @@ import { hasGrant } from '../../../utils/hasGrant'
 import { CustomNavLink } from '../../../components/NavLink/NavLink'
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import { setChoiceCategoryOfSports } from '../../../store/categorySports/operations'
-import { getTournamentsOfSport } from '../../../store/tournamentsSport/operations'
+import { setChoiceCategoryOfSports } from '../../../store/sportsCategory/operations'
 
 export const SidebarMenu = props => {
-  const category = useSelector(state => state.categorySports.categorySports)
+  const category = useSelector(state => state.sportsCategory.sportsCategory)
   const user = useSelector(state => state.users.currentUser)
   const dispatch = useDispatch()
   const changeCategoryId = (id) => {
     dispatch(setChoiceCategoryOfSports(id))
-    dispatch(getTournamentsOfSport(id))
   }
 
   return (

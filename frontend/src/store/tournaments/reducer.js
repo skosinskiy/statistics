@@ -6,19 +6,19 @@ const initialState = {
   activeTournament: null // default null if choice have nuber
 }
 
-const tournamentsOfSportReducer = (state = initialState, action) => {
+const tournamentsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TYPES.TOURNAMENTS_SPORT_FETCHED:
+    case TYPES.TOURNAMENTS_FETCHED:
       return {
         ...state,
         tournaments: action.payload
       }
-    case TYPES.TOURNAMENTS_SPORT_LOADING:
+    case TYPES.TOURNAMENTS_LOADING:
       return {
         ...state,
         isTournamentsLoading: action.payload
       }
-    case TYPES.TOURNAMENT_SPORT_CHOICE:
+    case TYPES.TOURNAMENT_CHOICE:
       return {
         ...state,
         activeTournament: action.payload
@@ -30,4 +30,4 @@ const tournamentsOfSportReducer = (state = initialState, action) => {
   };
 }
 
-export default tournamentsOfSportReducer
+export default tournamentsReducer

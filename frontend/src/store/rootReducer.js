@@ -2,13 +2,13 @@ import { combineReducers } from 'redux'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 
 import users from './users'
-import categorySports from './categorySports'
-import tournamentsOfSport from './tournamentsSport'
+import sportsCategory from './sportsCategory'
+import tournaments from './tournaments'
 
 const rootReducer = combineReducers({
   users: users,
-  categorySports: categorySports,
-  tournamentsOfSport: tournamentsOfSport,
+  sportsCategory: sportsCategory,
+  tournaments: tournaments,
   toastr: toastrReducer
 })
 

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const TournamentsList = props => {
-  const tournaments = useSelector(state => state.tournamentsOfSport.tournaments)
+  const tournaments = useSelector(state => state.tournaments.tournaments)
   const classes = useStyles()
 
   return (

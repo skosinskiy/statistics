@@ -4,27 +4,25 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Grant } from '../../constants/permissions'
 import { hasGrant } from '../../utils/hasGrant'
-import { Sports } from '../../pages/AdminPage/Sports/Sports'
+import { Sports } from '../../pages/MainPage/Sports/Sports'
 import { NotFound } from '../Page404/Page404'
-import { Home } from '../../pages/AdminPage/Home/Home'
+import { Home } from '../../pages/MainPage/Home/Home'
 
-class AdminRouter extends Component {
+class MainRouter extends Component {
   render () {
     const { user } = this.props
     return (
-      <React.Fragment>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/sport/:id" component={Sports} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <AuthorizedRoute authorized={hasGrant(user, Grant.VIEW)} path="/sport/:id" component={Sports} />
 
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </React.Fragment>
+        <Route path="*" component={NotFound} />
+      </Switch>
     )
   }
 }
 
-AdminRouter.propTypes = {
+MainRouter.propTypes = {
   user: PropTypes.object.isRequired
 }
 
@@ -45,4 +43,4 @@ const mapStateToProps = ({ users }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(AdminRouter))
+export default withRouter(connect(mapStateToProps)(MainRouter))

@@ -1,16 +1,16 @@
 import * as TYPES from './types'
 
-export const categorySportsLoading = (isLoading) => ({
+export const sportsCategoryLoading = (isLoading) => ({
   type: TYPES.CATEGORY_SPORTS_LOADING,
   payload: isLoading
 })
 
-export const categorySportsFetched = (categorySports) => ({
+export const sportsCategoryFetched = (sportsCategory) => ({
   type: TYPES.CATEGORY_SPORTS_FETCHED,
-  payload: categorySports
+  payload: sportsCategory
 })
 
-export const categorySportsChoice = (id) => ({
+export const sportsCategoryChoice = (id) => ({
   type: TYPES.CATEGORY_SPORTS_CHOICE,
   payload: id
 })

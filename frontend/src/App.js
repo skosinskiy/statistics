@@ -12,7 +12,7 @@ import { Preloader } from './components/Preloader/Preloader'
 class App extends Component {
   componentDidMount () {
     this.props.getCurrentUser()
-  }
+  };
 
   render () {
     if (this.props.isCurrentUserLoading) {
@@ -31,7 +31,7 @@ class App extends Component {
       </ThemeProvider>
     )
   }
-}
+};
 
 const mapStateToProps = state => {
   return {
@@ -42,6 +42,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getCurrentUser: () => dispatch(usersOperations.getCurrentUser())
+  
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

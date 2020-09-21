@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -8,18 +8,31 @@ import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded'
 import { SidebarMenu } from './SidebarMenu/SidebarMenu'
-import AdminRoutes from '../../components/AdminRoutes/AdminRoutes'
+import MainRouter from '../../components/MainRouters/MainRouter'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+//  component
+import { TournamentsList } from './TournamentsList/TournamentsList'
+// redux
+import { useDispatch, useSelector } from 'react-redux'
+import { getSportsCategory } from '../../store/sportsCategory/operations'
+// style
+import './MainPage.scss'
 
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  appBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '0px 0px 0px 250px',
+    justifyContent: 'space-between'
   },
   toolbar: {
-    display: 'flex',
-    justifyContent: 'flex-end'
+    display: 'flex'
   },
   toolbarText: {
     display: 'flex',
@@ -37,18 +50,21 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen
     })
   },
-  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: '0px',
     height: '100vh',
+    marginTop: '64px',
     overflow: 'auto'
   }
 }))
 
-const AdminPage = () => {
+const MainPage = props => {
   const classes = useStyles()
-
+  const dispatch = useDispatch()
+  const activeSportId = useSelector(state => state.sportsCategory.choiceCategory)
+  const tournamentList = activeSportId ? <TournamentsList></TournamentsList> : null
+  useEffect(() => dispatch(getSportsCategory()), [dispatch])
   const logoutUser = () => {
     window.localStorage.clear()
     window.location.reload()
@@ -56,35 +72,32 @@ const AdminPage = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar
-        position="absolute"
-        className={classNames(classes.appBar, classes.appBarShift)}
-      >
+      <AppBar className={classNames(classes.appBar)}>
+        <div className="sidebar-wrapper">
+          <SidebarMenu/>
+        </div>
         <Toolbar className={classes.toolbar}>
           <IconButton onClick={logoutUser} color="inherit" alt="Log out">
             <ExitToAppRoundedIcon/>
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: classNames(classes.drawerPaper)
-        }}
-      >
+      <Drawer variant="permanent" classes={{ paper: classNames(classes.drawerPaper) }}>
         <div className={classes.toolbarText}>
-              Hello!
+           Hello!
         </div>
         <Divider/>
-        <SidebarMenu/>
+        {
+          tournamentList
+        }
         <Divider/>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer}/>
-        <AdminRoutes/>
+        <MainRouter/>
       </main>
     </div>
   )
 }
 
-export default withRouter(AdminPage)
+export default withRouter(MainPage)

@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+
+.MuiPaper-root {
+    a {
+        &.active {
+            color: $color-font-blue79;
+        }
+    }
+}

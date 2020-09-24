@@ -2,6 +2,7 @@ import * as ACTIONS from './actions'
 import { getTournaments } from '../tournaments/operations'
 import api from '../../components/Axios/Axios'
 import { toastr } from 'react-redux-toastr'
+// react
 
 export const getSportsCategory = () => dispatch => {
   dispatch(ACTIONS.sportsCategoryLoading(true))

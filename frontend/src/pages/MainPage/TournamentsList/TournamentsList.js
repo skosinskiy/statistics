@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 // redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 // material
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
@@ -9,19 +9,23 @@ import SportsSoccerIcon from '@material-ui/icons/SportsSoccer'
 // import SportsBaseballIcon from '@material-ui/icons/SportsBaseball'
 // styles
 import './TournamentsList.scss'
+//  redux
+import { setChoiceTournament } from '../../../store/tournaments/operations'
 
-export const TournamentsList = props => {
+export const TournamentsList = () => {
+  const dispatch = useDispatch()
   const tournaments = useSelector(state => state.tournaments.tournaments)
-  const [value, setValue] = useState(0) // default first
-  const changeTournamentsItem = (event, newValue) => {
-    setValue(newValue)
+  const activeTournament = useSelector(state => state.tournaments.activeTournament)
+
+  const changeActiveTournament = (event, newValue) => {
+    dispatch(setChoiceTournament(newValue))
   }
 
   return (
     <BottomNavigation showLabels
-      value={value}
+      value={activeTournament}
       className="tournaments-list"
-      onChange={changeTournamentsItem}>
+      onChange={changeActiveTournament}>
       {
         tournaments ? tournaments.map(tournament => {
           return <BottomNavigationAction

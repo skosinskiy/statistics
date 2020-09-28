@@ -3,7 +3,7 @@ import * as TYPES from './types'
 const initialState = {
   tournaments: null,
   isTournamentsLoading: true,
-  activeTournament: null // default null if choice have nuber
+  activeTournament: null // default null if choice have number
 }
 
 const tournamentsReducer = (state = initialState, action) => {

@@ -15,8 +15,7 @@ import { setChoiceTournament } from '../../../store/tournaments/operations'
 export const TournamentsList = () => {
   const dispatch = useDispatch()
   const tournaments = useSelector(state => state.tournaments.tournaments)
-  const activeTournament = useSelector(state => state.tournaments.activeTournament)
-
+  const activeTournament = useSelector(state => state.tournaments.activeTournamentInList)
   const changeActiveTournament = (event, newValue) => {
     dispatch(setChoiceTournament(newValue))
   }

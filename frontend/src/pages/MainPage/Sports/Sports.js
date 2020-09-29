@@ -5,13 +5,20 @@ import { LinearIndeterminate } from '../../../components/LinearIndeterminate/Lin
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { setChoiceCategoryOfSports } from '../../../store/sportsCategory/operations'
+import { findAllRounds } from '../../../store/rounds/operations'
 
 export const Sports = (props) => {
   const dispatch = useDispatch()
   const [redirctToHome, setRedirctToHome] = useState(false)
-  const isTournamentsLoading = useSelector(state => state.tournaments.isTournamentsLoading)
-  const tournaments = useSelector(state => state.tournaments.tournaments)
+
   const sports = (useSelector(state => state.sportsCategory.sportsCategory))
+
+  const activeIdOfTournament = useSelector(state => state.tournaments.activeTournamentId)
+  const tournaments = useSelector(state => state.tournaments.tournaments)
+  const isTournamentsLoading = useSelector(state => state.tournaments.isTournamentsLoading)
+
+  const roundsOfChoiceTournament = useSelector(state => state.rounds.rounds)
+  const isRoundsLoading = useSelector(state => state.rounds.isRoundsLoading)
 
   useEffect(() => {
     if (isTournamentsLoading && !tournaments && sports) {
@@ -24,8 +31,12 @@ export const Sports = (props) => {
         setRedirctToHome(true)
       }
     }
-  }, [isTournamentsLoading, tournaments, sports, props.match.params.id, dispatch])
+    if (activeIdOfTournament && !isTournamentsLoading) dispatch(findAllRounds(activeIdOfTournament))
+  }, [isTournamentsLoading, tournaments, sports, props.match.params.id, activeIdOfTournament, dispatch])
 
+  if (roundsOfChoiceTournament != null && !isRoundsLoading && !isTournamentsLoading) {
+    console.log(roundsOfChoiceTournament.content)
+  }
   if (redirctToHome) {
     return <Redirect to='/' />
   }

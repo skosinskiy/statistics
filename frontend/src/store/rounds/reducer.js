@@ -2,7 +2,8 @@ import * as TYPES from './types'
 
 const initialState = {
   rounds: null,
-  isRoundsLoading: true
+  isRoundsLoading: true,
+  pages: 1 // default is one
 }
 
 const roundsReducer = (state = initialState, action) => {

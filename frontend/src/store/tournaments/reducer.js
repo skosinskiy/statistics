@@ -3,7 +3,8 @@ import * as TYPES from './types'
 const initialState = {
   tournaments: null,
   isTournamentsLoading: true,
-  activeTournament: null // default null if choice have number
+  activeTournamentInList: null, // default null if choice have number
+  activeTournamentId: null
 }
 
 const tournamentsReducer = (state = initialState, action) => {
@@ -21,7 +22,8 @@ const tournamentsReducer = (state = initialState, action) => {
     case TYPES.TOURNAMENT_CHOICE:
       return {
         ...state,
-        activeTournament: action.payload
+        activeTournamentInList: action.payload,
+        activeTournamentId: state.tournaments[action.payload].id
       }
     default:
       return {

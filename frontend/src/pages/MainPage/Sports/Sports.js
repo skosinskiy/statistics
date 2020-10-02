@@ -27,7 +27,7 @@ export const Sports = (props) => {
   const isTournamentsLoading = useSelector(state => state.tournaments.isTournamentsLoading)
 
   const roundsOfChoiceTournament = useSelector(state => state.rounds.rounds)
-  // const isRoundsLoading = useSelector(state => state.rounds.isRoundsLoading)
+  const isRoundsLoading = useSelector(state => state.rounds.isRoundsLoading)
 
   useEffect(() => {
     if (isTournamentsLoading && !tournaments && sports) {
@@ -45,16 +45,13 @@ export const Sports = (props) => {
   const penalChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false)
   }
-  // if (roundsOfChoiceTournament != null && !isRoundsLoading && !isTournamentsLoading) {
-  //   console.log(roundsOfChoiceTournament.content)
-  // }
   if (redirctToHome) {
     return <Redirect to='/' />
   }
 
   return (
     <React.Fragment>
-      { isTournamentsLoading ? <LinearIndeterminate></LinearIndeterminate> : <div className="rounds">
+      { isTournamentsLoading || isRoundsLoading ? <LinearIndeterminate></LinearIndeterminate> : <div className="rounds">
         { roundsOfChoiceTournament ? roundsOfChoiceTournament.content.map((round) => {
           return <Accordion key={'key_' + round.id}
             square expanded={expanded === 'panel_id_' + round.id}

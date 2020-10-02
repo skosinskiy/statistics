@@ -8,9 +8,9 @@ export const RoundItem = (props) => {
   let parseDateStr
   const parseDate = (dateISO) => {
     const newDate = new Date(dateISO)
-    parseDateStr = newDate.getDate() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getFullYear() + ' ' + newDate.toLocaleTimeString().slice(0, -3)
+    parseDateStr = newDate.getDate() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + newDate.getFullYear() + ' ' + ('0' + newDate.getHours()).slice(-2) + ':' + ('0' + newDate.getMinutes()).slice(-2)
   }
-  if (props.item) parseDate(date)
+  if (date) parseDate(date)
   return (<div className="item-wrapper">
     <div className="item-time">{ parseDateStr }</div>
     <div className="item-main">

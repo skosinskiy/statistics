@@ -16,4 +16,4 @@ spring:
 jwt:
   secret: ${random.uuid}
   refresh-token-exp-ms: 1209600000
-  access-token-exp-ms: 900000
+  access-token-exp-ms: 36000000

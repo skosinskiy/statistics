@@ -27,7 +27,7 @@ export const Sports = (props) => {
   const isTournamentsLoading = useSelector(state => state.tournaments.isTournamentsLoading)
 
   const roundsOfChoiceTournament = useSelector(state => state.rounds.rounds)
-  const isRoundsLoading = useSelector(state => state.rounds.isRoundsLoading)
+  // const isRoundsLoading = useSelector(state => state.rounds.isRoundsLoading)
 
   useEffect(() => {
     if (isTournamentsLoading && !tournaments && sports) {
@@ -45,9 +45,9 @@ export const Sports = (props) => {
   const penalChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false)
   }
-  if (roundsOfChoiceTournament != null && !isRoundsLoading && !isTournamentsLoading) {
-    console.log(roundsOfChoiceTournament.content)
-  }
+  // if (roundsOfChoiceTournament != null && !isRoundsLoading && !isTournamentsLoading) {
+  //   console.log(roundsOfChoiceTournament.content)
+  // }
   if (redirctToHome) {
     return <Redirect to='/' />
   }
@@ -69,7 +69,10 @@ export const Sports = (props) => {
             <AccordionDetails className="accordion-content">
               {
                 round.matchList.map((item) => {
-                  return <RoundItem key={'key_' + item.id} item={item}></RoundItem>
+                  return <RoundItem
+                    key={'key_' + item.id}
+                    item={item}>
+                  </RoundItem>
                 })
               }
             </AccordionDetails>

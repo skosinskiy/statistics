@@ -21,11 +21,7 @@ export const Sports = (props) => {
   const [expanded, setExpanded] = useState('panel1')
 
   const sports = (useSelector(state => state.sportsCategory.sportsCategory))
-
-  const activeIdOfTournament = useSelector(state => state.tournaments.activeTournamentId)
-  const tournaments = useSelector(state => state.tournaments.tournaments)
-  const isTournamentsLoading = useSelector(state => state.tournaments.isTournamentsLoading)
-
+  const { activeTournamentId, tournaments, isTournamentsLoading } = useSelector(state => state.tournaments)
   const roundsOfChoiceTournament = useSelector(state => state.rounds.rounds)
   const isRoundsLoading = useSelector(state => state.rounds.isRoundsLoading)
 
@@ -40,8 +36,8 @@ export const Sports = (props) => {
         setRedirctToHome(true)
       }
     }
-    if (activeIdOfTournament && !isTournamentsLoading) dispatch(findAllRounds(activeIdOfTournament))
-  }, [isTournamentsLoading, tournaments, sports, props.match.params.id, activeIdOfTournament, dispatch])
+    if (activeTournamentId && !isTournamentsLoading) dispatch(findAllRounds(activeTournamentId))
+  }, [isTournamentsLoading, tournaments, sports, props.match.params.id, activeTournamentId, dispatch])
   const penalChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false)
   }
@@ -51,7 +47,7 @@ export const Sports = (props) => {
 
   return (
     <React.Fragment>
-      { isTournamentsLoading || isRoundsLoading ? <LinearIndeterminate></LinearIndeterminate> : <div className="rounds">
+      { isTournamentsLoading || isRoundsLoading ? <LinearIndeterminate/> : <div className="rounds">
         { roundsOfChoiceTournament ? roundsOfChoiceTournament.content.map((round) => {
           return <Accordion key={'key_' + round.id}
             square expanded={expanded === 'panel_id_' + round.id}
@@ -74,8 +70,7 @@ export const Sports = (props) => {
               }
             </AccordionDetails>
           </Accordion>
-        }) : null
-        }
+        }) : null }
       </div> }
     </React.Fragment>
   )

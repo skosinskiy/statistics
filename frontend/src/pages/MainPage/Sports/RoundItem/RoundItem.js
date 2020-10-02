@@ -1,23 +1,19 @@
 import React from 'react'
-
+// services
+import { parseDate } from '../../../../service/dateParsers'
 // style
 import './RoundItem.scss'
 
 export const RoundItem = (props) => {
   const { homeTeam, awayTeam, homeScore, awayScore, state, date } = props.item
-  let parseDateStr
-  const parseDate = (dateISO) => {
-    const newDate = new Date(dateISO)
-    parseDateStr = newDate.getDate() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + newDate.getFullYear() + ' ' + ('0' + newDate.getHours()).slice(-2) + ':' + ('0' + newDate.getMinutes()).slice(-2)
-  }
-  if (date) parseDate(date)
+  const dateParsed = date ? parseDate(date) : null
+  const score = state === 'SCHEDULED' ? 'ꟷ - ꟷ' : homeScore + ' - ' + awayScore
+
   return (<div className="item-wrapper">
-    <div className="item-time">{ parseDateStr }</div>
+    <div className="item-time">{ dateParsed }</div>
     <div className="item-main">
       <span className="home-name">{homeTeam.title}</span>
-      <span className="score">{state === 'SCHEDULED'
-        ? 'ꟷ - ꟷ'
-        : homeScore + ' - ' + awayScore }
+      <span className="score">{ score }
       </span>
       <span className="away-name">{awayTeam.title}</span>
     </div>

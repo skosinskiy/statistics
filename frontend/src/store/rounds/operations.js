@@ -2,7 +2,7 @@ import * as ACTIONS from './actions'
 import api from '../../components/Axios/Axios'
 import { toastr } from 'react-redux-toastr'
 
-export const findAllRounds = (id) => dispatch => { // id of sport
+export const findAllRounds = (id) => dispatch => {
   dispatch(ACTIONS.roundsFetched(null))
   dispatch(ACTIONS.roundsLoading(true))
   api.get('/api/rounds/tournament/' + id)

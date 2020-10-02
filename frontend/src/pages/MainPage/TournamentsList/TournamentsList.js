@@ -10,15 +10,13 @@ import SportsSoccerIcon from '@material-ui/icons/SportsSoccer'
 // styles
 import './TournamentsList.scss'
 //  redux
-import { setChoiceTournament } from '../../../store/tournaments/operations'
+import { setActiveTournament } from '../../../store/tournaments/operations'
 
 export const TournamentsList = () => {
   const dispatch = useDispatch()
   const tournaments = useSelector(state => state.tournaments.tournaments)
   const activeTournament = useSelector(state => state.tournaments.activeTournamentInList)
-  const changeActiveTournament = (event, newValue) => {
-    dispatch(setChoiceTournament(newValue))
-  }
+  const changeActiveTournament = (event, newValue) => { dispatch(setActiveTournament(newValue)) }
 
   return (
     <BottomNavigation showLabels

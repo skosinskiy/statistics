@@ -1,46 +1,39 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
 // redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 // material
-import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
-import AccordionDetails from '@material-ui/core/AccordionDetails'
-import Typography from '@material-ui/core/Typography'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import BottomNavigation from '@material-ui/core/BottomNavigation'
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
+import SportsSoccerIcon from '@material-ui/icons/SportsSoccer'
+// import SportsBaseballIcon from '@material-ui/icons/SportsBaseball'
 // styles
 import './TournamentsList.scss'
+//  redux
+import { setActiveTournament } from '../../../store/tournaments/operations'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%'
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular
-  }
-}))
-
-export const TournamentsList = props => {
+export const TournamentsList = () => {
+  const dispatch = useDispatch()
   const tournaments = useSelector(state => state.tournaments.tournaments)
-  const classes = useStyles()
+  const activeTournament = useSelector(state => state.tournaments.activeTournamentInList)
+  const changeActiveTournament = (event, newValue) => { dispatch(setActiveTournament(newValue)) }
 
   return (
-    tournaments ? tournaments.map(tournament => {
-      return <Accordion key={'id_' + tournament.id}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>{tournament.title}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-            no info
-        </AccordionDetails>
-      </Accordion>
-    }) : null
+    <BottomNavigation showLabels
+      value={activeTournament}
+      className="tournaments-list"
+      onChange={changeActiveTournament}>
+      {
+        tournaments ? tournaments.map(tournament => {
+          return <BottomNavigationAction
+            className="tournaments-list_item"
+            key={'id_' + tournament.id}
+            label={tournament.title}
+            icon={<SportsSoccerIcon />}
+          />
+        }) : null
+      }
+    </BottomNavigation>
   )
 }
 

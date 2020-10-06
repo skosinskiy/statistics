@@ -1,0 +1,36 @@
+.item-wrapper {
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding: 10px 32px 10px 16px;
+    background: #333951;
+    .item-main {
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        align-items: center;
+        .home-name, .away-name {
+            color: #00D8FF;
+            font-size: 20px;
+        };
+        .away-name {
+            display: flex;
+            justify-content: flex-end
+        }
+        .score {
+            color: #959EBD;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center
+        }
+    }
+    .item-state {
+        display: flex;
+        justify-content: flex-end;
+    }
+    &:not(:last-child) {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+}

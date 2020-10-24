@@ -1,0 +1,2 @@
+export const MATCH_ID_LOADING = 'MATCH_ID_LOADING'
+export const MATCH_ID_FETCHED = 'MATCH_ID_FETCHED'

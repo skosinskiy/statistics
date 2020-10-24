@@ -12,6 +12,7 @@ import MainRouter from '../../components/MainRouters/MainRouter'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 //  component
 import { TournamentsList } from './TournamentsList/TournamentsList'
+import { RoundItemModal } from './RoundItemModal/RoundItemModal'
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 import { getSportsCategory } from '../../store/sportsCategory/operations'
@@ -72,6 +73,7 @@ const MainPage = props => {
 
   return (
     <div className={classes.root}>
+      <RoundItemModal></RoundItemModal>
       <AppBar className={classNames(classes.appBar)}>
         <div className="sidebar-wrapper">
           <SidebarMenu/>

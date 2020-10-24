@@ -18,7 +18,7 @@ import './Sports.scss'
 export const Sports = (props) => {
   const dispatch = useDispatch()
   const [redirctToHome, setRedirctToHome] = useState(false)
-  const [expanded, setExpanded] = useState('panel1')
+  const [expanded, setExpanded] = useState('panel_id_1')
 
   const sports = (useSelector(state => state.sportsCategory.sportsCategory))
   const { activeTournamentId, tournaments, isTournamentsLoading } = useSelector(state => state.tournaments)

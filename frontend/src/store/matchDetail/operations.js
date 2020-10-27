@@ -15,3 +15,7 @@ export const findMatchDetails = (id) => dispatch => {
       dispatch(ACTIONS.matchLoading(false))
     })
 }
+
+export const clearMatchDetailsData = () => dispatch => {
+  dispatch(ACTIONS.matchFetched(null))
+}

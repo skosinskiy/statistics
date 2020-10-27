@@ -1,7 +1,5 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-// redux
-import { useSelector, useDispatch } from 'react-redux'
 // material
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
@@ -10,6 +8,7 @@ import SportsSoccerIcon from '@material-ui/icons/SportsSoccer'
 // styles
 import './TournamentsList.scss'
 //  redux
+import { useSelector, useDispatch } from 'react-redux'
 import { setActiveTournament } from '../../../store/tournaments/operations'
 
 export const TournamentsList = () => {

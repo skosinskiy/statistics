@@ -1,23 +1,15 @@
 import React, { useEffect } from 'react'
 // services
 import { makeStyles } from '@material-ui/core/styles'
-
-import PropTypes from 'prop-types'
-// import Button from '@material-ui/core/Button'
+// material
 import Dialog from '@material-ui/core/Dialog'
-// import ListItemText from '@material-ui/core/ListItemText'
-// import ListItem from '@material-ui/core/ListItem'
-// import List from '@material-ui/core/List'
-// import Divider from '@material-ui/core/Divider'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
 import CloseIcon from '@material-ui/icons/Close'
-// import Slide from '@material-ui/core/Slide'
 // style
 import './RoundItemModal.scss'
 // redux
@@ -25,6 +17,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { clearMatchDetailsData } from '../../../store/matchDetail/operations'
 // services
 import { parseDate } from '../../../service/dateParsers'
+// child
+import { RoundReview } from './RoundReview/RoundReview'
+import { RoundStatistic } from './RoundStatistic/RoundStatistic'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -36,60 +31,36 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function TabPanel (props) {
-  const { children, value, index, ...other } = props
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  )
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-}
-
-function a11yProps (index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
-  }
-}
-
 export const RoundItemModal = (props) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { isMatchesLoading, match } = useSelector(state => state.matchDetail)
+
   const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState(0);
+  const [tabNumber, setValue] = React.useState(0)
+  const [tabInfo, setTabsInfo] = React.useState(null)
   const dateParsed = match ? parseDate(match.date) : null
 
   useEffect(() => {
     if (match && isMatchesLoading) {
       setOpen(true)
+      setTabsInfo(<RoundReview information={ match.eventList }></RoundReview>)
     }
-  }, [match, isMatchesLoading])
+  }, [match, isMatchesLoading, tabNumber])
 
   const handleClose = () => {
     dispatch(clearMatchDetailsData())
     setOpen(false)
+    setValue(0)
   }
 
-  const handleChange = (event, newValue) => {
+  const handleChangeTab = (event, newValue) => {
     setValue(newValue)
+    if (newValue === 1) {
+      setTabsInfo(<RoundStatistic statistic={ match.statisticList }></RoundStatistic>)
+    } else {
+      setTabsInfo(<RoundReview information={ match.eventList }></RoundReview>)
+    }
   }
 
   return (
@@ -109,11 +80,8 @@ export const RoundItemModal = (props) => {
               className={classes.title + ' header-name'}>
               { 'league NAME?'}
             </Typography>
-            {/* <Button autoFocus color="inherit" onClick={handleClose}>
-              save
-            </Button> */}
             <Typography
-              variant="h6"
+              variant="subtitle1"
               className={classes.title + ' header-date'}>
               { dateParsed }
             </Typography>
@@ -127,23 +95,16 @@ export const RoundItemModal = (props) => {
           </div>
           <span className="primary-away">{ match.awayTeam.title }</span>
         </section>
-        <section>
+        <section className="main">
           <AppBar position="static">
-            <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-              <Tab label="Item One" {...a11yProps(0)} />
-              <Tab label="Item Two" {...a11yProps(1)} />
-              <Tab label="Item Three" {...a11yProps(2)} />
+            <Tabs value={ tabNumber } onChange={ handleChangeTab } aria-label="simple tabs example">
+              <Tab label="Review match" />
+              <Tab label="Statistic" />
             </Tabs>
           </AppBar>
-          <TabPanel value={value} index={0}>
-            Item One
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            Item Two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Item Three
-          </TabPanel>
+          <div className="main-info">
+            { tabInfo }
+          </div>
         </section>
       </Dialog> : null }
     </div>

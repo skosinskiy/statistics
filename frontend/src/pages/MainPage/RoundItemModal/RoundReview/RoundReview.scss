@@ -1,0 +1,27 @@
+@import '../../../../styles/typography';
+
+.container-wr {
+    width: 100%;
+    .first-half, .second-half {
+        display: flex;
+        flex-direction: column;
+
+        &_header {
+            display: flex;
+            justify-content: space-between;
+            background: $color-base-greey;
+            padding: 8px 15px;
+            @include medium_text;
+            color: $color-white;
+        };
+
+        &_body {
+            min-height: 50px;
+            display: flex;
+            flex-direction: column;
+            background: $color-white;
+            color: $color-text-1;
+            @include default_text;
+        };
+    };
+};

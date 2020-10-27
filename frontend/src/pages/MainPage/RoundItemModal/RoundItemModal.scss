@@ -1,6 +1,11 @@
 @import '../../../styles/typography';
 
 .round-popup {
+    align-self: center;
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+
     .header {
         &-date {
             display: flex;
@@ -37,9 +42,20 @@
                 @include medium_text;
             };
         };
+    };
 
-        &-away {
+    .main {
+        margin: 3rem 0px 0px 0px;
 
+        .PrivateTabIndicator-colorSecondary-15 {
+            background-color: $color-white087;
+        };
+
+        &-info {
+            margin-top: 1rem;
+            // padding: 1rem;
+            display: flex;
+            min-height: 10vh;
         };
     };
 };

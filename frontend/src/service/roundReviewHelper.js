@@ -1,16 +1,34 @@
+export const halfsScore = (eventList, home) => {
+  let counterFirstHalf = [0, 0]
+  let counterSecondHalf = [0, 0]
 
-export const halfsScore = (eventList) => {
-  const tmpArr = eventList.forEach((event) => {
-    let counterFirstHalf = [0, 0]
-    let counterSecondHalf = [0, 0]
-
-    if (event.type === 'GOAL' && event.minute <= 45) {
-      // time one
-    } else if (event.type === 'GOAL') {
-      // time two
+  eventList.forEach((event) => {
+    if (event.type !== 'GOAL') return
+    if (event.minute <= 45) {
+      event.team.title === home ? counterFirstHalf[0]++ : counterFirstHalf[1]++
+    } else {
+      event.team.title === home ? counterSecondHalf[0]++ : counterSecondHalf[1]++
     }
-    return [counterFirstHalf[0] + ' - ' + counterFirstHalf[1], counterSecondHalf[0] + ' - ' + counterSecondHalf[1]]
   })
-  console.log(tmpArr)
-  return ['2', '3']
+  const uiHelper = (arr1, arr2) => [String(arr1[0] + ' - ' + arr1[1]), String(arr2[0] + ' - ' + arr2[1])]
+  return uiHelper(counterFirstHalf, counterSecondHalf)
+}
+
+export const eventCutter = (eventList, home) => {
+  const footballUiEvent = {
+    1: [],
+    2: []
+  }
+  eventList.forEach((event) => {
+    if (event.minute <= 45) {
+      footballUiEvent[1].push(event)
+    } else {
+      footballUiEvent[2].push(event)
+    }
+  })
+  return footballUiEvent
+}
+
+export const eventClassHelper = (currentTeam, homeTeam) => {
+  return currentTeam === homeTeam ? 'event left' : 'event right'
 }

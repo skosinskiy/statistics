@@ -1,4 +1,4 @@
-@import '../../../styles/material.typography.mixins';
+@import '../../../styles/typography';
 
 .tournaments-list {
     flex-direction: column;
@@ -17,7 +17,7 @@
                 margin-right: 10px;
             }
             .MuiBottomNavigationAction-label {
-                @include base_text()
+                @include default_text()
             }
         }
     };

@@ -2,12 +2,12 @@ import React from 'react'
 // style
 import './RoundReview.scss'
 // services
-import { halfsScore } from '../../../../service/roundReviewHelper'
+import { halfsScore, eventCutter, eventClassHelper } from '../../../../service/roundReviewHelper'
 
 export const RoundReview = (props) => {
-  console.log(props)
-  const scoreArr = halfsScore(props.information)
-  console.log(scoreArr)
+  const scoreArr = halfsScore(props.information, props.homeTeam)
+  const eventUiObject = eventCutter(props.information, props.homeTeam)
+
   return (
     <React.Fragment>
       <div className="container-wr">
@@ -17,7 +17,12 @@ export const RoundReview = (props) => {
             <span>{ scoreArr[0] }</span>
           </div>
           <div className="first-half_body">
-            1321321321
+            { eventUiObject[1].map((item) => {
+              return <span key={ 'id_' + item.team.id + item.minute}
+                className={eventClassHelper(item.team.title, props.homeTeam)}>
+                {item.minute + `' ` + item.type}
+              </span>
+            })}
           </div>
         </div>
         <div className="second-half">
@@ -26,7 +31,12 @@ export const RoundReview = (props) => {
             <span>{ scoreArr[1] }</span>
           </div>
           <div className="second-half_body">
-            53453434553
+            { eventUiObject[2].map((item) => {
+              return <span key={ 'id_' + item.team.id + item.minute}
+                className={eventClassHelper(item.team.title, props.homeTeam)}>
+                {item.minute + `' ` + item.type}
+              </span>
+            })}
           </div>
         </div>
       </div>

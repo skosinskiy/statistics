@@ -44,7 +44,12 @@ export const RoundItemModal = (props) => {
   useEffect(() => {
     if (match && isMatchesLoading) {
       setOpen(true)
-      setTabsInfo(<RoundReview information={ match.eventList }></RoundReview>)
+      setTabsInfo(
+        <RoundReview
+          information={ match.eventList }
+          awayTeam={ match.awayTeam.title }
+          homeTeam={ match.homeTeam.title }>
+        </RoundReview>)
     }
   }, [match, isMatchesLoading, tabNumber])
 
@@ -59,7 +64,12 @@ export const RoundItemModal = (props) => {
     if (newValue === 1) {
       setTabsInfo(<RoundStatistic statistic={ match.statisticList }></RoundStatistic>)
     } else {
-      setTabsInfo(<RoundReview information={ match.eventList }></RoundReview>)
+      setTabsInfo(
+        <RoundReview
+          information={ match.eventList }
+          awayTeam={ match.awayTeam.title }
+          homeTeam={ match.homeTeam.title }>
+        </RoundReview>)
     }
   }
 

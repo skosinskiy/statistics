@@ -9,19 +9,30 @@
         &_header {
             display: flex;
             justify-content: space-between;
-            background: $color-base-greey;
+            background: $color-base4;
             padding: 8px 15px;
             @include medium_text;
             color: $color-white;
         };
 
         &_body {
-            min-height: 50px;
+            // min-height: 50px;
             display: flex;
             flex-direction: column;
             background: $color-white;
             color: $color-text-1;
-            @include default_text;
+            .event {
+                color: $color-main;
+                @include default_text;
+                padding: 8px 15px;
+                border-bottom: 1px solid $color-main;
+                width: 100%;
+
+                &.right {
+                    display: flex;
+                    justify-content: flex-end;
+                };
+            };
         };
     };
 };

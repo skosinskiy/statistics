@@ -1,5 +1,4 @@
 task buildApplicationLocal {
-    dependsOn(':frontend:build')
+    dependsOn(':frontend:npm_run_build')
     finalizedBy(':backend:build')
 }
-

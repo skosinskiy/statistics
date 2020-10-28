@@ -42,7 +42,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getCurrentUser: () => dispatch(usersOperations.getCurrentUser())
-  
+
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

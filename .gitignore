@@ -12,3 +12,9 @@
 
 # Node cache files
 **/node_modules
+
+# Node cache files
+**/package-lock.json
+
+# Frontend build in backend module
+**/static/**/*.*
